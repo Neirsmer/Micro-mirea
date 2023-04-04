@@ -7,7 +7,7 @@ scrape_configs:
       - targets: [ 'krakend_ce:9091' ]
   - job_name: 'first'
     static_configs:
-      - targets: ['734cbd1c62ef:7000']
+      - targets: ['62b1db197ca7:7000']
   - job_name: 'sec'
     static_configs:
-      - targets: ['59aff1895167:8000']
+      - targets: ['7a5e6e67a5a9:8000']

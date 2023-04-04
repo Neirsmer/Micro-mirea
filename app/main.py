@@ -23,13 +23,17 @@ FastAPIInstrumentor.instrument_app(app)
 #promi
 from prometheus_fastapi_instrumentator import Instrumentator
 instrumentator = Instrumentator().instrument(app)
-@app.get("/fir_hello")
-def read_root():
-    return {"output": "hello from first"}
 
-@app.get("/fir_bye")
-def read_root():
-    return {"output": "bye from first"}
+@app.on_event("startup")
+async def _startup():
+    instrumentator.expose(app)
 @app.get("/health")
 def health():
     return
+@app.get("/1_nya")
+def read_root():
+    return {"result":"NYA KAWAI"}
+@app.get("/1_poka")
+def read_root():
+
+    return {"result":"USSSR"}

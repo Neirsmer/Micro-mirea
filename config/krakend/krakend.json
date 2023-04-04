@@ -1,11 +1,16 @@
 {
     "version": 3,
+    "timeout": "100ms",
+    "max_idle_connections": 100,
+    "http_client_config": {
+        "disable_keep_alives": false
+    },
     "endpoints": [
         {
-            "endpoint": "/fir_hello",
+            "endpoint": "/krack1_1",
             "backend": [
                 {
-                    "url_pattern": "/fir_hello",
+                    "url_pattern": "/1_nya",
                     "host": [
                         "http://first:7000"
                     ]
@@ -15,10 +20,10 @@
             "group": "first"
         },
         {
-            "endpoint": "/fir_bye",
+            "endpoint": "/krack1_2",
             "backend": [
                 {
-                    "url_pattern": "/fir_bye",
+                    "url_pattern": "/1_poka",
                     "host": [
                         "http://first:7000"
                     ]
@@ -28,10 +33,10 @@
             "group": "first"
         },
         {
-            "endpoint": "/sec_hello",
+            "endpoint": "/krack2_1",
             "backend": [
                 {
-                    "url_pattern": "/sec_hello",
+                    "url_pattern": "/2_nya",
                     "host": [
                         "http://second:8000"
                     ]
@@ -41,10 +46,10 @@
             "group": "second"
         },
         {
-            "endpoint": "/sec_bye",
+            "endpoint": "/krack2_2",
             "backend": [
                 {
-                    "url_pattern": "/sec_bye",
+                    "url_pattern": "/2_poka",
                     "host": [
                         "http://second:8000"
                     ]
@@ -57,32 +62,38 @@
             "endpoint": "/all",
             "backend": [
               {
-                "url_pattern": "/fir_hello",
+                "url_pattern": "/1_nya",
                     "host": [
                         "http://first:7000"
                     ]
               },
               {
-                "url_pattern": "/fir_bye",
+                "url_pattern": "/1_poka",
                     "host": [
                         "http://first:7000"
                     ]
               },
               {
-                "url_pattern": "/sec_hello",
+                "url_pattern": "/2_nya",
                     "host": [
                         "http://second:8000"
                     ]
               },
               {
-                "url_pattern": "/sec_bye",
+                "url_pattern": "/2_poka",
                     "host": [
                         "http://second:8000"
                     ]
               }
-            ]
+            ],
+            "extra_config": {
+              "aggregate": true,
+              "aggregate_path": "/"
+            }
           }
     ],
+
+
  "extra_config":{
     "telemetry/opencensus": {
       "sample_rate": 100,
