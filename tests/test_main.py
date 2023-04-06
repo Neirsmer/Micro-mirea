@@ -6,3 +6,4 @@ def test_health():
 def test_bye():
     response =requests.get(f'{api}/1_nya')
     assert response.status_code == 200
+#dsds
